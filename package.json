@@ -2,14 +2,15 @@
   "name": "todo-api",
   "version": "1.0.0",
   "description": "TO-DO Server",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx --watch src/index.ts",
-    "build": "tsc index.ts"
+    "dev": "tsx --watch src/server.ts",
+    "build": "tsc server.ts"
   },
   "dependencies": {
-    "fastify": "^4.22.2"
+    "fastify": "^4.22.2",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/node": "^20.6.0",
