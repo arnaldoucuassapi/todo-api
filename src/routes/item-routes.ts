@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { ItemController } from './../controllers/item-controller';
 
-export function itemRoutes(fastify: FastifyInstance) {
+export async function itemRoutes(fastify: FastifyInstance) {
 
   const itemController = new ItemController();
   
