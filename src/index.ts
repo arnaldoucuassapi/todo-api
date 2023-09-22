@@ -11,12 +11,13 @@ const app = fastify({
 app.register(userRoutes);
 app.register(itemRoutes);
 
-const start = () => {
-  app.listen({
+const start = async () => {
+  await app.listen({
     port: address,
     host: '0.0.0.0'
-  })
-  .then(() => app.log.info(`Server running in port ${address} 🚀`));
+  });
+  
+  console.log(`Server running in port ${address} 🚀`);
 }
 
 start();

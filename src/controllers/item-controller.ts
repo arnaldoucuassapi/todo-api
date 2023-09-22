@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { IController } from "../models/controller-contracts";
+import { IController } from "../utils/@types";
 
 export class ItemController implements IController {
   create(request: FastifyRequest, reply: FastifyReply) {
