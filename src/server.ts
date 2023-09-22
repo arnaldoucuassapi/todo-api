@@ -1,6 +1,6 @@
 import { fastify } from "fastify";
 import { userRoutes } from "./routes/user-routes";
-import { itemRoutes } from "./routes/item-routes";
+import { taskRoutes } from "./routes/task-routes";
 
 const address = 3333;
 
@@ -9,7 +9,7 @@ const app = fastify({
 });
 
 app.register(userRoutes);
-app.register(itemRoutes);
+app.register(taskRoutes);
 
 const start = async () => {
   await app.listen({

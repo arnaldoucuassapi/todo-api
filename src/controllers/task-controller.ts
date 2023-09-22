@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { IController } from "../utils/@types";
 
-export class ItemController implements IController {
+export class TaskController implements IController {
   create(request: FastifyRequest, reply: FastifyReply) {
 
   };
