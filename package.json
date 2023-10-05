@@ -9,6 +9,7 @@
     "build": "tsc server.ts"
   },
   "dependencies": {
+    "@prisma/client": "^5.4.1",
     "fastify": "^4.22.2",
     "zod": "^3.22.4"
   },
