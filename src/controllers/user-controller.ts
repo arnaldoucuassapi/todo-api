@@ -48,11 +48,50 @@ export class UserController implements IController {
     return user;
   }
 
-  update(request: FastifyRequest, reply: FastifyReply) {
+  async update(request: FastifyRequest, reply: FastifyReply) {
+    const paramsSchema = z.object({
+      id: z.string().uuid()
+    });
 
+    const { id } = paramsSchema.parse(request.params);
+
+    const bodySchema = z.object({
+      avatar: z.string(),
+      name: z.string(),
+      email: z.string().email(),
+      password: z.string().min(8),
+    });
+
+    const { avatar, name, email, password } = bodySchema.parse(request.body);
+
+    await prisma.user.update({
+      where: {
+        id
+      },
+      data: {
+        avatar,
+        name,
+        email,
+        password
+      }
+    })
+
+    return reply.status(204).send();
   };
 
-  delete(request: FastifyRequest, reply: FastifyReply) {
+  async delete(request: FastifyRequest, reply: FastifyReply) {
+    const paramsSchema = z.object({
+      id: z.string().uuid()
+    });
 
+    const { id } = paramsSchema.parse(request.params);
+
+    await prisma.user.delete({
+      where: {
+        id
+      }
+    });
+
+    return reply.status(204).send();
   };
 }
