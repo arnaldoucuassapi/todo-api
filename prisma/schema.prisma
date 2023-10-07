@@ -11,13 +11,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String   @id @unique @default(uuid())
   avatar    String?
   name      String
-  email     String
+  email     String   @unique
   password  String
   createdAt DateTime @default(now())
 
-  @@unique([id, email])
   @@map("users")
 }
