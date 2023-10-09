@@ -8,13 +8,6 @@ interface IController {
   delete: handlerRoute
 }
 
-type UserType = {
-  id: string,
-  name: string,
-  email: string,
-}
-
 export {
-  IController,
-  UserType
+  IController
 }

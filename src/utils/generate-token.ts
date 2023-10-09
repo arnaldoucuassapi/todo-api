@@ -1,8 +1,11 @@
 import 'dotenv/config';
-import { UserType } from "./@types";
 import jwt from "jsonwebtoken";
 
-export function generateToken(payload: UserType) {
+type PayloadType = { 
+  id: string 
+};
+
+export function generateToken(payload: PayloadType) {
   const secretKey = process.env.JWT_SECRET_KEY as string;
   const expiresIn = Math.floor((Date.now() / 1000));
 
