@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "TO-DO Server",
   "main": "src/server.ts",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "tsx --watch src/server.ts",
     "build": "tsc server.ts"
   },
@@ -17,10 +16,13 @@
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
+    "@types/jest": "^29.5.5",
     "@types/jsonwebtoken": "^9.0.3",
     "@types/node": "^20.6.0",
     "dotenv": "^16.3.1",
+    "jest": "^29.7.0",
     "prisma": "^5.4.1",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"
   },
   "author": "Arnaldo Ucuassapi",
