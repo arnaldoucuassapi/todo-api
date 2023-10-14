@@ -1,5 +1,4 @@
 import { generateToken } from '../utils/generate-token';
-import { verifyToken } from '../utils/verify-token';
 
 describe('generate token', () => {
   it('with payload', () => {
