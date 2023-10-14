@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
 type handlerRoute = (request: FastifyRequest, reply: FastifyReply) => unknown;
+
 interface IController {
   create: handlerRoute;
   update: handlerRoute;
@@ -8,6 +9,11 @@ interface IController {
   delete: handlerRoute
 }
 
+interface IAuth {
+  login: handlerRoute
+}
+
 export {
-  IController
+  IController,
+  IAuth
 }

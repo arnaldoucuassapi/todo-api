@@ -8,7 +8,7 @@ type PayloadType = {
 
 export function generateToken(payload: PayloadType) {
   const payloadSchema = z.object({
-    id: z.string().uuid("need to be uuid")
+    id: z.string().uuid()
   });
 
   payload = payloadSchema.parse(payload);
