@@ -27,7 +27,13 @@ export class UserController implements IController {
   };
 
   async list(request: FastifyRequest, reply: FastifyReply) {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      select: {
+        avatar: true,
+        name: true,
+        email: true
+      }
+    });
 
     return users;
   };
