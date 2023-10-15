@@ -14,7 +14,7 @@ export function generateToken(payload: PayloadType) {
   payload = payloadSchema.parse(payload);
 
   const secretKey = process.env.JWT_SECRET_KEY as string;
-  const expiresIn = '30s';
+  const expiresIn = '10m';
 
   const token = jwt.sign(payload, secretKey, {
     expiresIn
