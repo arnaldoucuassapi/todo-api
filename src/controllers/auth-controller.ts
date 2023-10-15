@@ -29,6 +29,8 @@ export class Authentication implements IAuth {
 
     const token = generateToken(userId);
 
-    return token;
+    return {
+      token
+    };
   }
 }

@@ -2,6 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { IController } from "../utils/@types";
 import { prisma } from "../utils/prisma";
 import { z } from "zod";
+import { DecodedTokenResponseType, verifyToken } from "../utils/verify-token";
 
 export class UserController implements IController {
   async create(request: FastifyRequest, reply: FastifyReply) {
@@ -38,20 +39,26 @@ export class UserController implements IController {
     return users;
   };
 
-  async get(request: FastifyRequest) {
-    const paramsSchema = z.object({
-      id: z.string().uuid()
-    });
+  async get(request: FastifyRequest, reply: FastifyReply) {
+    const token = request.headers['authorization'];
 
-    const { id } = paramsSchema.parse(request.params);
+    if (!token) {
+      return reply.status(401).send();
+    }
 
-    const user = await prisma.user.findUniqueOrThrow({
-      where: {
-        id
-      }
-    });
+    try {
+      const { id } = verifyToken(token) as DecodedTokenResponseType;
 
-    return user;
+      const user = await prisma.user.findUniqueOrThrow({
+        where: {
+          id
+        }
+      });
+
+      return user;
+    } catch (err) {
+      return reply.status(401).send(err);
+    }
   }
 
   async update(request: FastifyRequest, reply: FastifyReply) {
