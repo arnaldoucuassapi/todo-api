@@ -40,14 +40,8 @@ export class UserController implements IController {
   };
 
   async get(request: FastifyRequest, reply: FastifyReply) {
-    const token = request.headers['authorization'];
-
-    if (!token) {
-      return reply.status(401).send();
-    }
-
     try {
-      const { id } = verifyToken(token) as DecodedTokenResponseType;
+      const { id } = request.context.tokenValues;
 
       const user = await prisma.user.findUniqueOrThrow({
         where: {
