@@ -1,5 +1,5 @@
-import { verifyToken } from "../utils/verify-token";
-import { generateToken } from "../utils/generate-token";
+import { verifyToken } from "../../utils/verify-token";
+import { generateToken } from "../../utils/generate-token";
 
 describe("verify token", () => {
   it("valid token", () => {
