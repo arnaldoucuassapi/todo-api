@@ -11,7 +11,10 @@ const app = fastify({
 
 app.register(userRoutes);
 app.register(authRoutes);
-app.register(taskRoutes);
+
+app.register(taskRoutes, {
+  prefix: "/tasks"
+});
 
 const start = async () => {
   await app.listen({
