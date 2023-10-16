@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { IAuth } from "../utils/@types";
+import { IAuth } from "../types";
 import { z } from "zod";
 import { prisma } from "../utils/prisma";
 import { generateToken } from '../utils/generate-token';

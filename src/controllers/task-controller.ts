@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { IController } from "../utils/@types";
+import { IController } from "../types";
 import { prisma } from "../utils/prisma";
 
 export class TaskController implements IController {
