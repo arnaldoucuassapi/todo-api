@@ -47,11 +47,28 @@ export class TaskController implements IController {
     return tasks;
   };
 
-  async search() {}
+  async search() {};
 
   async update(request: FastifyRequest, reply: FastifyReply) {};
 
-  async delete(request: FastifyRequest, reply: FastifyReply) {};
+  async delete(request: FastifyRequest, reply: FastifyReply) {
+    const { id: userId } = request.context.tokenValues;
+
+    const paramsSchema = z.object({
+      id: z.string().uuid()
+    });
+
+    const { id } = paramsSchema.parse(request.params);
+
+    await prisma.task.delete({
+      where: {
+        id,
+        userId
+      }
+    });
+
+    return reply.status(204).send();
+  };
 
   async done() {}
 }
