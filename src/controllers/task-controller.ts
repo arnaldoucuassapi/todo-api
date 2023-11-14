@@ -70,5 +70,30 @@ export class TaskController implements IController {
     return reply.status(204).send();
   };
 
-  async done() {}
+  async done(request: FastifyRequest, reply: FastifyReply) {
+    const { id: userId } = request.context.tokenValues;
+    
+    const paramsSchema = z.object({
+      id: z.string().uuid()
+    });
+
+    const bodySchema = z.object({
+      done: z.boolean()
+    });
+
+    const { id } = paramsSchema.parse(request.params);
+    const { done } = bodySchema.parse(request.body);
+
+    await prisma.task.update({
+      data: {
+        done
+      },
+      where: {
+        id,
+        userId
+      }
+    });
+
+    return reply.status(200).send();
+  };
 }
