@@ -14,7 +14,10 @@ export async function taskRoutes(fastify: FastifyInstance) {
   }, taskController.list);
   
   fastify.get('/?search', taskController.search);
-  fastify.put('/update/:id', taskController.update);
+
+  fastify.put('/update/:id', {
+    preHandler: authMiddleware
+  }, taskController.update);
 
   fastify.delete('/delete/:id', {
     preHandler: authMiddleware
